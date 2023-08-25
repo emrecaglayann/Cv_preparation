@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Hazırlama Aracı</title>
+    <style>
+        .container{
+    width: 100%;
+    display: flex;
+}
+.text-center {
+    text-align: center;
+}
+.border {
+    border: 1px solid black;
+    margin-bottom: 1px;
+}
+.text-content-container{
+    width: 25%;
+}
+.cv-title{
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 1px;
+}
+.align-items-start{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.underline{
+    text-decoration: underline;
+}
+.display-none {
+    display: none;
+}
+.invisible{
+    visibility: hidden;
+}
+.table-container {
+    width: 25%;
+    padding: 10px;
+}
+.cv-body {
+    display: flex;
+    width: 100%;
+}
+.cv-container {
+    width: 50%;
+    height: 100%;
+    padding-left: 25px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background-color: #dd2e2e;
+}
+.cv-left-side {
+    width: 32%;
+    background-color: rgb(190, 2, 2);
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+}
+.cv-right-side {
+    width: 68%;
+    height: 89%;
+    word-wrap: break-word
+}
+.cv-header h2 {
+    margin: 0%;
+    padding: 0%;
+    margin-left: 5%;
+}
+.cv-header-line{
+    width: 90%;
+    border: 2px solid black;
+}
+.profile-image{
+    height: 24%;
+    width: 100%;
+}
+.profile-photo{
+    border: 1px solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    height: 60%;
+    width: 70%;
+    margin: auto;                    
+    padding: 3px;
+    margin-top: 1rem;
+}
+.section-spacing {
+    height: 15rem;
+}
+.section-middle-spacing {
+    height: 30rem;
+}
+.name-box {
+    height: 25%;
+    background-color: rgb(47, 47, 47);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.name-title-line {
+    width: 20%;
+}
+    </style>
+</head>
+<body>
+    <div class="cv-title">
+        <h2>CV Hazırlama Aracı</h2>
+    </div>
+    
+    <div class="container">
+        <div class="cv-body">
+        <div class="table-container border" style="background-color: gray;">
+            <div class="column-title text-center">
+                <h3>Metin İçerikleri</h3>
+            </div>
+            <hr class="line" />
+            <table>
+                <tr>
+                    <td><h4 class="underline">İsim Kutusu</h4></td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="FullName">Ad Soyad:</label></td>
+                    <td>
+                        <input type="text" id="FullName" name="FullName" onkeyup="FullName()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="title">Ünvan:</label></td>
+                    <td>
+                        <input type="text" id="title" name="title" onkeyup="Title()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h4 class="underline">İletişim Bilgileri</h4></td>
+                </tr>
+                <tr>
+                <td><label class="align-items-start" for="phone">Telefon:</label></td>
+                <td>
+                    <input type="text" id="phone" name="phone" onkeyup="Phone()"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="email">Mail:</label></td>
+                <td>
+                    <input type="email" id="email" name="email" onkeyup="Email()"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="web">Web:</label></td>
+                <td>
+                    <input type="web" id="web" name="web" onkeyup="Web()"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="address">Adres:</label></td>
+                <td>
+                    <textarea name="address" id="address" cols="22" rows="5" onkeyup="Address()"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><h4 class="underline">Eğitim Bilgileri</h4></td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="ExplanationEdu">Açıklama :</label></td>
+                <td>
+                    <textarea name="ExplanationEdu" id="ExplanationEdu" cols="22" rows="5" onkeyup="EducationExplanation()"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="SchoolCount">Okul Sayısı :</label></td>
+                <td>
+                    <select name="SchoolCount" id="SchoolCount" onchange="SchoolCountSelect()">
+                        <option value="">Seçiniz</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="display-none" id="FirstSchoolCount"><label class="align-items-start" for="FirstSchoolCount">1. Okul</label></td>
+                <td><input id="FirstSchoolName" name="FirstSchoolName" class="display-none" onkeyup="FirstSchoolName()"></td>
+                <td><input class="display-none" name="FirstSchoolExplanation" id="FirstSchoolExplanation" placeholder="Açıklama" type="text" onkeyup="FirstSchoolExplanation()"></td>
+            </tr>
+            <tr>
+                <td class="display-none" id="SecondSchoolCount"><label class="align-items-start" for="SecondSchoolCount">2. Okul</label></td>
+                <td><input class="display-none" id="SecondSchoolName" name="SecondSchoolName" onkeyup="SecondSchoolName()"></td>
+                <td><input class="display-none" name="SecondSchoolExplanation" id="SecondSchoolExplanation" placeholder="Açıklama" type="text" onkeyup="SecondSchoolExplanation()"></td>
+            </tr>
+            <tr>
+                <td class="display-none" id="ThirdSchoolCount"><label class="align-items-start" for="ThirdSchoolCount">3. Okul</label></td>
+                <td><input class="display-none" id="ThirdSchoolName" name="ThirdSchoolName" onkeyup="ThirdSchoolName()"></td>
+                <td><input class="display-none" name="ThirdSchoolExplanation" id="ThirdSchoolExplanation" placeholder="Açıklama" type="text" onkeyup="ThirdSchoolExplanation()"></td>
+            </tr>
+            <tr>
+                <td class="align-items-start"><h4 class="underline">Yetenekler</h4></td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="ExplanationSkills">Açıklama:</label></td>
+                <td>
+                    <textarea name="ExplanationSkills" id="ExplanationSkills" cols="22" rows="5" onkeyup="SkillExplanation()"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="SkillCount">Yetenek Sayısı:</label></td>
+                <td>
+                    <select name="SkillCount" id="SkillCount" onchange="SkillCountSelect()">
+                        <option value="">Seçiniz</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="display-none" id="FirstSkillCount"><label class="align-items-start" for="FirstSkillCount">1. Yetenek</label></td>
+                <td><input class="display-none" id="FirstSkillName" name="FirstSkillName" onkeyup="FirstSkillName()"></td>
+                <td><input class="display-none" name="FirstSkillExplanation" id="FirstSkillExplanation" placeholder="Açıklama" type="text" onkeyup="FirstSkillExplanation()"></td>
+            </tr>
+            <tr>
+                <td class="display-none" id="SecondSkillCount"><label class="align-items-start" for="SecondSkillCount">2. Yetenek</label></td>
+                <td><input class="display-none" id="SecondSkillName" name="SecondSkillName" onkeyup="SecondSkillName()"></td>
+                <td><input class="display-none" name="SecondSkillExplanation" id="SecondSkillExplanation" placeholder="Açıklama" type="text" onkeyup="SecondSkillExplanation()"></td>
+            </tr>
+            <tr>
+                <td class="display-none" id="ThirdSkillCount"><label class="align-items-start" for="ThirdSkillCount">3. Yetenek</label></td>
+                <td><input class="display-none" id="ThirdSkillName" name="ThirdSkillName" onkeyup="ThirdSkillName()"></td>
+                <td><input class="display-none" name="ThirdSkillExplanation" id="ThirdSkillExplanation" placeholder="Açıklama" type="text" onkeyup="ThirdSkillExplanation()"></td>
+            </tr>
+            <tr>
+                 <td class="align-items-start"><h4 class="underline">Hakkımda</h4></td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="aboutMeExplanation">Açıklama:</label></td>
+                <td>
+                    <textarea name="aboutMeExplanation" id="aboutMeExplanation" cols="22" rows="5" onkeyup="AboutMeExplanation()"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td class="align-items-start"><h4 class="underline">İş Deneyimi</h4></td>
+            </tr>
+            <tr>
+                <td><label class="align-items-start" for="WorkExperienceExplanation">Açıklama:</label></td>
+                <td>
+                    <textarea name="WorkExperienceExplanation" id="WorkExperienceExplanation" cols="22" rows="5" onkeyup="WorkExperience()"></textarea>
+                </td>
+            </tr>
+            </table>
+        </div>
+
+        <div class="table-container border" style="background-color: #DFDEDD;">
+            <div class="column-title text-center">
+                <h3>Görünüş</h3>
+            </div>
+            <hr class="line" />
+            <table>
+                <tr>
+                    <td class="align-items-start"><h4 class="underline">Renkler</h4></td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="backgroundcolor">Arkaplan Rengi :</label></td>
+                    <td>
+                        <input type="color"id="backgroundcolor" name="backgroundcolor"value="#dd2e2e" onchange="CvBackgroundColor()">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="leftcolumncolor">Sol Kolon Rengi :</label></td>
+                    <td>
+                        <input type="color" id="leftcolumncolor" name="leftcolumncolor"value="#992323" onchange="LeftSideBackgroundColor()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="nameboxcolor">İsim Kutusu Rengi :</label></td>
+                    <td>
+                        <input type="color" id="nameboxcolor" name="nameboxcolor"value="#0000" onchange="NameBoxColor()">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="nameboxtextcolor">İsim Kutusu Yazı Rengi :</label></td>
+                    <td>
+                        <input type="color" id="nameboxtextcolor" name="nameboxtextcolor"value="#FFFFFF" onchange="NameBoxTextColor()">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="align-items-start"><h4 class="underline">Yazı Tipi</h4></td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="textType">Yazı Tipi:</label></td>
+                    <td>
+                        <select name="textType" id="textType" onchange="ChangeFontFamily()">
+                            <option value="">Seçiminiz</option>
+                            <option value="1">Times New Roman</option>
+                            <option value="2">Courier New</option>
+                            <option value="3">Lucida Handwriting</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="align-items-start"><h4 class="underline">Fotoğraf</h4></td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="photoframeshape">Fotoğraf Çerçevesi Şekli:</label></td>
+                    <td>
+                        <select name="photoframeshape" id="photoframeshape" onchange="ChangePhotoFrameShape()">
+                            <option value="">Seçiminiz</option>
+                            <option value="1">Köşeli</option>
+                            <option value="2">Oval</option>
+                            <option value="3">Yuvarlak</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="align-items-start"><h4 class="underline">Başlık Altı Çizgileri</h4></td>
+                </tr>
+                <tr>
+                    <td><label class="align-items-start" for="nameboxlinecolor">Çizgi Rengi :</label></td>
+                <td>
+                    <input type="color" id="nameboxlinecolor" name="nameboxlinecolor"value="#0000" onchange="BelowTitleLines()">
+
+                </td>
+                </tr>
+                <td><label class="align-items-start" for="lineshape">Çizgi Şekli:</label></td>
+                <td>
+                    <select name="lineshape" id="lineshape" onchange="LineShape()">
+                        <option value="">Seçiminiz</option>
+                        <option value="1">Noktalı</option>
+                        <option value="2">Çizgili</option>
+                        <option value="3">Düz</option>
+                    </select>
+                </td>
+            </table>
+        </div>
+        
+        <div class="cv-container border">
+            <div class="cv-left-side">
+                <div class="profile-image">
+                    <div class="profile-photo">FOTOĞRAF</div>
+                </div>
+                <div class="cv-header" id="contact">
+                    <h2>İLETİŞİM</h2>
+                    <hr class="cv-header-line">
+                    <ul>
+                        <li id="phone-li">{ Telefon }</li>
+                    </ul>
+                    <ul>
+                        <li id="mail-li">{ Mail }</li>
+                    </ul>
+                    <ul>
+                        <li id="address-li">{ Adres }</li>
+                    </ul>
+                    <ul>
+                        <li id="web-li">{ Web }</li>
+                    </ul>
+                </div>
+                <div class="section-spacing"></div>
+                <div class="cv-header" id="educationCv">
+                    <h2>EĞİTİM</h2>
+                    <hr class="cv-header-line">
+                    <div style="padding-left: 1rem;">
+                        <div id="educationExplanation">
+                            { AÇIKLAMA }
+                        </div>
+                        <ul id="educationParentUl" class="display-none">
+                            <li id="educationFirstChildLi" class="display-none">
+                                <ul id="educationChildUl">
+                                    <li id="educationSecondChildLi"></li>
+                                </ul>
+                            </li>
+                            <li id="educationThirdChildLi" class="display-none">
+                                <ul id="educationSecondChildUl">
+                                    <li id="educationFourthChildLi"></li>
+                                </ul>
+                            </li>
+                            <li id="educationFifthChildLi" class="display-none">
+                                <ul id="educationThirdChildUl">
+                                    <li id="educationSixthChildLi"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-spacing"></div>
+                <div class="cv-header" id="skillsCv">
+                    <h2>YETENEKLER</h2>
+                    <hr class="cv-header-line">
+                    <div style="padding-left: 1rem;">
+                        <div id="skillExplanation">
+                            { AÇIKLAMA }
+                        </div>
+                        <ul id="skillParentUl" class="display-none">
+                            <li id="skillFirstChildLi" class="display-none">
+                                <ul id="skillChildUl">
+                                    <li id="skillSecondChildLi"></li>
+                                </ul>
+                            </li>
+                            <li id="skillThirdChildLi" class="display-none">
+                                <ul id="skillSecondChildUl">
+                                    <li id="skillFourthChildLi"></li>
+                                </ul>
+                            </li>
+                            <li id="skillFifthChildLi" class="display-none">
+                                <ul id="skillThirdChildUl">
+                                    <li id="skillSixthChildLi"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cv-right-side">
+                <div class="name-box">
+                    <h1 id="name-box-fullname"> { AD SOYAD }</h1>
+                    <hr class="name-title-line">
+                    <h2 id="name-box-title">{ ÜNVAN }</h2>
+                </div>
+                <div class="cv-header" style="margin-top: 1.25rem;">
+                    <h2>HAKKIMDA</h2>
+                    <hr class="cv-header-line">
+                    <div id="aboutMe" style="padding-left: 1rem;">
+                        { AÇIKLAMA }
+                    </div>
+                </div>
+                <div class="section-middle-spacing"></div>
+                <div class="cv-header">
+                    <h2>İŞ DENEYİMİ</h2>
+                    <hr class="cv-header-line">
+                    <div id="workExperience" style="padding-left: 1rem;">
+                        { AÇIKLAMA }
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <script>
+        function FullName() {
+           let fullName = document.getElementById("FullName").value;
+           let nameBoxFullName = document.getElementById("name-box-fullname");
+           nameBoxFullName.innerText = fullName;
+        }
+        function Title() {
+           let title = document.getElementById("title").value;
+           let titleBoxFullName = document.getElementById("name-box-title");
+           titleBoxFullName.innerText = title;
+        }
+        function Phone() {
+           let phone = document.getElementById("phone").value;
+           let phoneLi = document.getElementById("phone-li");
+           phoneLi.innerText = phone;
+        }
+        function Email() {
+           let email = document.getElementById("email").value;
+           let emailLi = document.getElementById("mail-li");
+           emailLi.innerText = email;
+        }
+        function Web() {
+           let web = document.getElementById("web").value;
+           let webLi = document.getElementById("web-li");
+           webLi.innerText = web;
+        }
+        function Address() {
+           let address = document.getElementById("address").value;
+           let addressLi = document.getElementById("address-li");
+           addressLi.innerText = address;
+        }
+        function EducationExplanation() {
+           let explanationEdu = document.getElementById("ExplanationEdu").value;
+           let educationExplanation = document.getElementById("educationExplanation");
+           educationExplanation.textContent = explanationEdu;
+        }
+        function AboutMeExplanation() {
+            let explanationAboutMe = document.getElementById("aboutMeExplanation").value;
+            let aboutMeExplanation = document.getElementById("aboutMe");
+            aboutMeExplanation.innerHTML = explanationAboutMe;
+        }
+        function WorkExperience() {
+            let workExperienceExplanation = document.getElementById("WorkExperienceExplanation").value;
+            let workExperience = document.getElementById("workExperience");
+            workExperience.innerHTML = workExperienceExplanation;
+        }
+        function FirstSchoolName() {
+           let firstSchoolName = document.getElementById("FirstSchoolName").value;
+           let educationFirstChildLi = document.getElementById("educationFirstChildLi");
+           educationFirstChildLi.innerHTML = `
+            ${firstSchoolName}
+                <ul id="educationChildUl">
+                    <li id="educationSecondChildLi"></li>
+                </ul>
+            `;
+        }
+        function FirstSchoolExplanation() {
+            let firstSchoolExplanation = document.getElementById("FirstSchoolExplanation").value;
+            let educationSecondChildLi = document.getElementById("educationSecondChildLi");
+
+            educationSecondChildLi.textContent = firstSchoolExplanation;
+        }
+        function SecondSchoolName() {
+           let secondSchoolName = document.getElementById("SecondSchoolName").value;
+           let educationThirdChildLi = document.getElementById("educationThirdChildLi");
+           educationThirdChildLi.innerHTML = `
+            ${secondSchoolName}
+                <ul id="educationSecondChildUl">
+                    <li id="educationFourthChildLi"></li>
+                </ul>
+            `;
+        }
+        function SecondSchoolExplanation() {
+            let secondSchoolExplanation = document.getElementById("SecondSchoolExplanation").value;
+            let educationFourthChildLi = document.getElementById("educationFourthChildLi");
+
+            educationFourthChildLi.textContent = secondSchoolExplanation;
+        }
+        function ThirdSchoolName() {
+           let thirdSchoolName = document.getElementById("ThirdSchoolName").value;
+           let educationFifthChildLi = document.getElementById("educationFifthChildLi");
+           educationFifthChildLi.innerHTML = `
+            ${thirdSchoolName}
+                <ul id="educationThirdChildUl">
+                    <li id="educationSixthChildLi"></li>
+                </ul>
+            `;
+        }
+        function ThirdSchoolExplanation() {
+            let thirdSchoolExplanation = document.getElementById("ThirdSchoolExplanation").value;
+            let educationSixthChildLi = document.getElementById("educationSixthChildLi");
+
+            educationSixthChildLi.textContent = thirdSchoolExplanation;
+        }
+        function SchoolCountSelect(){
+            let firstSchoolCount = document.getElementById("FirstSchoolCount");
+            let firstSchoolName = document.getElementById("FirstSchoolName");
+            let firstSchoolExplanation = document.getElementById("FirstSchoolExplanation");
+
+            let secondSchoolCount = document.getElementById("SecondSchoolCount");
+            let secondSchoolName = document.getElementById("SecondSchoolName");
+            let secondSchoolExplanation = document.getElementById("SecondSchoolExplanation");
+
+            let thirdSchoolCount = document.getElementById("ThirdSchoolCount");
+            let thirdSchoolName = document.getElementById("ThirdSchoolName");
+            let thirdSchoolExplanation = document.getElementById("ThirdSchoolExplanation");
+
+            let educationParentUl = document.getElementById("educationParentUl");
+            let educationFirstChildLi = document.getElementById("educationFirstChildLi");
+            let educationThirdChildLi = document.getElementById("educationThirdChildLi");
+            let educationFifthChildLi = document.getElementById("educationFifthChildLi");
+
+            let schoolCountSelect = document.getElementById("SchoolCount").value;
+
+            if (schoolCountSelect === "1") {
+                firstSchoolCount.classList.remove("display-none");
+                firstSchoolName.classList.remove("display-none");
+                firstSchoolExplanation.classList.remove("display-none");
+
+                educationParentUl.classList.remove("display-none");
+                educationFirstChildLi.classList.remove("display-none");
+
+                secondSchoolCount.classList.add("display-none");
+                secondSchoolName.classList.add("display-none");
+                secondSchoolExplanation.classList.add("display-none");
+                educationThirdChildLi.classList.add("display-none");
+
+                 thirdSchoolCount.classList.add("display-none");
+                 thirdSchoolName.classList.add("display-none");
+                 thirdSchoolExplanation.classList.add("display-none");
+                 educationFifthChildLi.classList.add("display-none");
+
+            } else if (schoolCountSelect === "2") {
+                firstSchoolCount.classList.remove("display-none");
+                firstSchoolName.classList.remove("display-none");
+                firstSchoolExplanation.classList.remove("display-none");
+
+                secondSchoolCount.classList.remove("display-none");
+                secondSchoolName.classList.remove("display-none");
+                secondSchoolExplanation.classList.remove("display-none");
+
+                educationParentUl.classList.remove("display-none");
+                educationFirstChildLi.classList.remove("display-none");
+                educationThirdChildLi.classList.remove("display-none");
+
+
+                 thirdSchoolCount.classList.add("display-none");
+                 thirdSchoolName.classList.add("display-none");
+                 thirdSchoolExplanation.classList.add("display-none");
+                 educationFifthChildLi.classList.add("display-none");
+
+            }
+            else if (schoolCountSelect === "3") {
+                firstSchoolCount.classList.remove("display-none");
+                firstSchoolName.classList.remove("display-none");
+                firstSchoolExplanation.classList.remove("display-none");
+
+                secondSchoolCount.classList.remove("display-none");
+                secondSchoolName.classList.remove("display-none");
+                secondSchoolExplanation.classList.remove("display-none");
+
+                thirdSchoolCount.classList.remove("display-none");
+                thirdSchoolName.classList.remove("display-none");
+                thirdSchoolExplanation.classList.remove("display-none");
+
+                educationParentUl.classList.remove("display-none");
+                educationFirstChildLi.classList.remove("display-none");
+                educationThirdChildLi.classList.remove("display-none");
+                educationFifthChildLi.classList.remove("display-none");
+
+            } else {
+                firstSchoolCount.classList.add("display-none");
+                firstSchoolName.classList.add("display-none");
+                firstSchoolExplanation.classList.add("display-none");
+
+                secondSchoolCount.classList.add("display-none");
+                secondSchoolName.classList.add("display-none");
+                secondSchoolExplanation.classList.add("display-none");
+
+                thirdSchoolCount.classList.add("display-none");
+                thirdSchoolName.classList.add("display-none");
+                thirdSchoolExplanation.classList.add("display-none");
+
+                educationParentUl.classList.add("display-none");
+                educationFirstChildLi.classList.add("display-none");
+                educationThirdChildLi.classList.add("display-none");
+                educationFifthChildLi.classList.add("display-none");
+            }
+        }
+
+        function SkillExplanation() {
+           let explanationSkills = document.getElementById("ExplanationSkills").value;
+           let skillExplanation = document.getElementById("skillExplanation");
+           skillExplanation.textContent = explanationSkills;
+        }
+        function FirstSkillName() {
+           let firstSkillName = document.getElementById("FirstSkillName").value;
+           let skillFirstChildLi = document.getElementById("skillFirstChildLi");
+           skillFirstChildLi.innerHTML = `
+            ${firstSkillName}
+                <ul id="skillChildUl">
+                    <li id="skillSecondChildLi"></li>
+                </ul>
+            `;
+        }
+        function FirstSkillExplanation() {
+            let firstSkillExplanation = document.getElementById("FirstSkillExplanation").value;
+            let skillSecondChildLi = document.getElementById("skillSecondChildLi");
+
+            skillSecondChildLi.textContent = firstSkillExplanation;
+        }
+        function SecondSkillName() {
+           let secondSkillName = document.getElementById("SecondSkillName").value;
+           let skillThirdChildLi = document.getElementById("skillThirdChildLi");
+           skillThirdChildLi.innerHTML = `
+            ${secondSkillName}
+                <ul id="skillSecondChildUl">
+                    <li id="skillFourthChildLi"></li>
+                </ul>
+            `;
+        }
+        function SecondSkillExplanation() {
+            let secondSkillExplanation = document.getElementById("SecondSkillExplanation").value;
+            let skillFourthChildLi = document.getElementById("skillFourthChildLi");
+
+            skillFourthChildLi.textContent = secondSkillExplanation;
+        }
+        function ThirdSkillName() {
+           let thirdSkillName = document.getElementById("ThirdSkillName").value;
+           let skillFifthChildLi = document.getElementById("skillFifthChildLi");
+           skillFifthChildLi.innerHTML = `
+            ${thirdSkillName}
+                <ul id="skillThirdChildUl">
+                    <li id="skillSixthChildLi"></li>
+                </ul>
+            `;
+        }
+        function ThirdSkillExplanation() {
+            let thirdSkillExplanation = document.getElementById("ThirdSkillExplanation").value;
+            let skillSixthChildLi = document.getElementById("skillSixthChildLi");
+
+            skillSixthChildLi.textContent = thirdSkillExplanation;
+        }
+        function SkillCountSelect(){
+            let firstSkillCount = document.getElementById("FirstSkillCount");
+            let firstSkillName = document.getElementById("FirstSkillName");
+            let firstSkillExplanation = document.getElementById("FirstSkillExplanation");
+
+            let secondSkillCount = document.getElementById("SecondSkillCount");
+            let secondSkillName = document.getElementById("SecondSkillName");
+            let secondSkillExplanation = document.getElementById("SecondSkillExplanation");
+
+            let thirdSkillCount = document.getElementById("ThirdSkillCount");
+            let thirdSkillName = document.getElementById("ThirdSkillName");
+            let thirdSkillExplanation = document.getElementById("ThirdSkillExplanation");
+
+            let skillParentUl = document.getElementById("skillParentUl");
+            let skillFirstChildLi = document.getElementById("skillFirstChildLi");
+            let skillThirdChildLi = document.getElementById("skillThirdChildLi");
+            let skillFifthChildLi = document.getElementById("skillFifthChildLi");
+
+            let skillCountSelect = document.getElementById("SkillCount").value;
+
+            if (skillCountSelect === "1") {
+                firstSkillCount.classList.remove("display-none");
+                firstSkillName.classList.remove("display-none");
+                firstSkillExplanation.classList.remove("display-none");
+
+                skillParentUl.classList.remove("display-none");
+                skillFirstChildLi.classList.remove("display-none");
+
+                secondSkillCount.classList.add("display-none");
+                secondSkillName.classList.add("display-none");
+                secondSkillExplanation.classList.add("display-none");
+                skillThirdChildLi.classList.add("display-none");
+
+                thirdSkillCount.classList.add("display-none");
+                thirdSkillName.classList.add("display-none");
+                thirdSkillExplanation.classList.add("display-none");
+                skillFifthChildLi.classList.add("display-none");
+
+            } else if (skillCountSelect === "2") {
+                firstSkillCount.classList.remove("display-none");
+                firstSkillName.classList.remove("display-none");
+                firstSkillExplanation.classList.remove("display-none");
+
+                secondSkillCount.classList.remove("display-none");
+                secondSkillName.classList.remove("display-none");
+                secondSkillExplanation.classList.remove("display-none");
+
+                skillParentUl.classList.remove("display-none");
+                skillFirstChildLi.classList.remove("display-none");
+                skillThirdChildLi.classList.remove("display-none");
+
+
+                 thirdSkillCount.classList.add("display-none");
+                 thirdSkillName.classList.add("display-none");
+                 thirdSkillExplanation.classList.add("display-none");
+                 skillFifthChildLi.classList.add("display-none");
+
+            }
+            else if (skillCountSelect === "3") {
+                firstSkillCount.classList.remove("display-none");
+                firstSkillName.classList.remove("display-none");
+                firstSkillExplanation.classList.remove("display-none");
+
+                secondSkillCount.classList.remove("display-none");
+                secondSkillName.classList.remove("display-none");
+                secondSkillExplanation.classList.remove("display-none");
+
+                thirdSkillCount.classList.remove("display-none");
+                thirdSkillName.classList.remove("display-none");
+                thirdSkillExplanation.classList.remove("display-none");
+
+                skillParentUl.classList.remove("display-none");
+                skillFirstChildLi.classList.remove("display-none");
+                skillThirdChildLi.classList.remove("display-none");
+                skillFifthChildLi.classList.remove("display-none");
+
+            } else {
+                firstSkillCount.classList.add("display-none");
+                firstSkillName.classList.add("display-none");
+                firstSkillExplanation.classList.add("display-none");
+
+                secondSkillCount.classList.add("display-none");
+                secondSkillName.classList.add("display-none");
+                secondSkillExplanation.classList.add("display-none");
+
+                thirdSkillCount.classList.add("display-none");
+                thirdSkillName.classList.add("display-none");
+                thirdSkillExplanation.classList.add("display-none");
+
+                skillParentUl.classList.add("display-none");
+                skillFirstChildLi.classList.add("display-none");
+                skillThirdChildLi.classList.add("display-none");
+                skillFifthChildLi.classList.add("display-none");
+            }
+        }
+        function CvBackgroundColor() {
+            let cvBackgroundColor = document.getElementById("backgroundcolor").value;
+            let cvBackground = document.querySelector(".cv-container");
+            cvBackground.style.backgroundColor = cvBackgroundColor;
+        }
+        function LeftSideBackgroundColor() {
+            let leftSideBackgroundColor = document.getElementById("leftcolumncolor").value;
+            let leftSide = document.querySelector(".cv-left-side");
+            leftSide.style.backgroundColor = leftSideBackgroundColor;
+        }
+        function NameBoxColor() {
+            let nameBoxBackgroundColor = document.getElementById("nameboxcolor").value;
+            let nameBox = document.querySelector(".name-box");
+            nameBox.style.backgroundColor = nameBoxBackgroundColor;
+        }
+        function NameBoxTextColor() {
+            let nameBoxTextColor = document.getElementById("nameboxtextcolor").value;
+            let nameBoxText = document.querySelector(".name-box");
+            let nameTitleLine = document.querySelector(".name-title-line");
+
+            nameBoxText.style.color = nameBoxTextColor;
+            nameTitleLine.style.color = nameBoxTextColor;
+        }
+        function ChangeFontFamily() {
+            let selectedValue = document.getElementById("textType").value;
+            let fontFamily;
+
+            if(selectedValue === "1") {
+                fontFamily = "'Times New Roman', Times, serif";
+            }
+            else if (selectedValue === "2") {
+                fontFamily = "'Courier New', Courier, monospace";
+            }
+            else if (selectedValue === "3") {
+                fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
+            }
+            else {
+                fontFamily = "";
+            }
+
+                let cvBodyText = document.querySelector(".cv-container");
+                cvBodyText.style.fontFamily = fontFamily;   
+        }
+
+        function ChangePhotoFrameShape() {
+            let selectedValue = document.getElementById("photoframeshape").value;
+            let photoFrameShape = document.querySelector(".profile-photo");
+
+            if (selectedValue === "1") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "0";
+            } else if (selectedValue === "2") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "40px";
+            } else if (selectedValue === "3") {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "50%";
+            } else {
+                photoFrameShape.style.border = "1px solid #000";
+                photoFrameShape.style.borderRadius = "50%";
+            }
+        }
+        function BelowTitleLines() {
+            let nameBoxLineColor = document.getElementById("nameboxlinecolor").value;
+            let lineElements = document.querySelectorAll(".cv-header-line");
+
+            lineElements.forEach(line => {
+                line.style.borderColor = nameBoxLineColor;
+            });
+        }
+        function LineShape() {
+            let selectedValue = document.getElementById("lineshape").value;
+            let lineShapes = document.querySelectorAll(".cv-header-line");
+
+            lineShapes.forEach(line => {
+                if (selectedValue === "1") {
+                    line.style.borderStyle = "dotted";
+                } else if (selectedValue === "2") {
+                    line.style.borderStyle = "dashed";
+                } else if (selectedValue === "3") {
+                    line.style.borderStyle = "solid";
+                } else {
+                    line.style.borderStyle = "solid";
+                }
+            });
+        }
+
+
+
+    </script>
+</body>
+</html>
